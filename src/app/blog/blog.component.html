@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Mes Posts</h2>
+       
+        <p>Mis à jour : {{ lastUpdate | async | date: 'yMMMMEEEEd' | uppercase }}</p>
+        <ul class="list-group">
+
+  
+          <app-blog-item  *ngFor="let post of postarrays"
+          [postName]="post.name"
+          [postDescription]="post.descr"
+          [postStatus]="post.status"></app-blog-item>
+        </ul>
+    
+      </div>
+    </div>
+  </div>

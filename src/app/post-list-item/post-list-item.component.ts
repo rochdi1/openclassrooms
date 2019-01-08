@@ -11,35 +11,49 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class PostListItemComponent implements OnInit {
 
   @Input() postsListItem: Posts;
-
+  like = 0;
+  notLike = 0;
   constructor(private _flash: FlashMessagesService) { }
 
   ngOnInit() {
   }
 
   getStatus() {
-    return this.postsListItem.loveIts;
+        if (this.like > this.notLike) {
+          return 'ok';
+        }
+        if (this.like < this.notLike) {
+          return 'no';
+        }
+        if (this.like === this.notLike) {
+          return 'null';
+        }
+
   }
 
   getColor() {
-    if (this.postsListItem.loveIts >= 1) {
+    if (this.like > this.notLike) {
       return 'green';
-    } else if (this.postsListItem.loveIts < 1) {
+    } else if (this.like === this.notLike) {
+      return 'gray';
+    } else if (this.like < this.notLike) {
       return 'red';
     }
   }
 
   loveIt() {
     this.postsListItem.loveIts = this.postsListItem.loveIts + 1;
-    this._flash.show(`I like :  ${this.postsListItem.loveIts}`  , { cssClass: 'alert-success', timeout: 1000 });
+    this.like = this.postsListItem.loveIts;
+
+    this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`  , { cssClass: 'alert-success', timeout: 1000 });
 
     console.log('love It');
 
   }
 
   dontLoveIt() {
-    this.postsListItem.loveIts = this.postsListItem.loveIts - 1;
-    this._flash.show(`I dont Like :  ${this.postsListItem.loveIts}`, { cssClass: 'alert-danger', timeout: 1000 });
+    this.notLike = this.notLike + 1;
+    this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`, { cssClass: 'alert-danger', timeout: 1000 });
 
     console.log('dontLoveIt It');
   }

@@ -1,13 +1,10 @@
 <div [ngClass]="{'list-group-item': true,
-                'list-group-item-success': getStatus() >= 1,
-                'list-group-item-danger': getStatus() < 1 }">
-   
-            <div style="width:20px;height:20px;background-color:red;" 
-              *ngIf="appareilStatus === 'no'"></div>
-
-              <div style="width:20px;height:20px;background-color:green;" 
-              *ngIf="appareilStatus === 'ok'"></div>
-
+                'list-group-item-success': getStatus() == 'ok',
+                'list-group-item-danger': getStatus()  == 'no',
+                'list-group-item-light': getStatus()  == 'null'
+                
+              }">
+  
 
             <h4 [ngStyle]="{color: getColor()}">
               {{ postsListItem.title }} <span class="float-right text-secondary font-weight-light small">{{ postsListItem.created_at | date:"short"}}</span>

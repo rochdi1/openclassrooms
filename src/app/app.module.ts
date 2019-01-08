@@ -13,6 +13,8 @@ import { AppareilComponent } from './appareil/appareil.component';
 import { FormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
 import { BlogItemComponent } from './blog-item/blog-item.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostListItemComponent } from './post-list-item/post-list-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BlogItemComponent } from './blog-item/blog-item.component';
     PageNotFoundComponent,
     AppareilComponent,
     BlogComponent,
-    BlogItemComponent
+    BlogItemComponent,
+    PostListComponent,
+    PostListItemComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogItemComponent } from './blog-item/blog-item.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostListItemComponent } from './post-list-item/post-list-item.component';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+import { AppareilService } from './services/appareil.service';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,12 @@ import { PostListItemComponent } from './post-list-item/post-list-item.component
     AppRoutingModule,
     FlashMessagesModule.forRoot(),
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    NgxWebstorageModule.forRoot(),
 
   ],
   providers: [
+    AppareilService
   ],
   bootstrap: [AppComponent]
 })

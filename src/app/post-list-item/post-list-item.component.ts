@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Posts } from '../posts';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,11 +12,42 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class PostListItemComponent implements OnInit {
 
   @Input() postsListItem: Posts;
-  like = 0;
-  notLike = 0;
-  constructor(private _flash: FlashMessagesService) { }
+
+   @Input() index: number;
+
+
+
+   like: number;
+   notLike: number;
+
+   setSessionStorage(param, content) {
+    this._flash.show(` ${param} == ${content}`, { cssClass: 'alert-danger', timeout: 1000 });
+    this.localSt.store(`${param}`, `${content}`);
+  }
+
+  getSessionStorage() {
+   // this._flash.show( this.localSt.retrieve( `${param}`) , { cssClass: 'alert-danger', timeout: 1000 });
+    this.like = typeof this.localSt.retrieve(`like` + this.index) !== 'undefined' ? this.localSt.retrieve(`like` + this.index) : 0;
+    // tslint:disable-next-line:max-line-length
+    this.notLike = typeof this.localSt.retrieve( `notlike` + this.index) !== 'undefined' ? this.localSt.retrieve( `notlike` + this.index) : 0;
+
+  }
+
+
+  delSessionStorage(param) {
+    this._flash.show( 'delete', { cssClass: 'alert-danger', timeout: 1000 });
+    this.localSt.clear( `${param}`);
+  }
+
+  constructor(private _flash: FlashMessagesService, private localSt: LocalStorageService) {
+    
+
+  }
+
 
   ngOnInit() {
+    this.getSessionStorage();
+    console.log(this.like);
   }
 
   getStatus() {
@@ -41,13 +73,20 @@ export class PostListItemComponent implements OnInit {
     }
   }
 
+
   loveIt() {
     this.postsListItem.loveIts = this.postsListItem.loveIts + 1;
     this.like = this.postsListItem.loveIts;
 
+  console.log(this.index);
+  console.log(this.localSt.retrieve(`Like${this.index}`));
+    this.setSessionStorage( `Like${this.index}`, this.like);
+    this.setSessionStorage( `notLike${this.index}`, this.notLike);
+
     this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`  , { cssClass: 'alert-success', timeout: 1000 });
 
     console.log('love It');
+  
 
   }
 
@@ -56,6 +95,11 @@ export class PostListItemComponent implements OnInit {
     this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`, { cssClass: 'alert-danger', timeout: 1000 });
 
     console.log('dontLoveIt It');
+ 
   }
+
+
+
+
 
 }

@@ -7,14 +7,10 @@
       <p>Mis à jour : {{ lastUpdate | async | date: 'short' | uppercase }}</p>
       <ul class="list-group">
     
-          <li class="app-post-list-item" *ngFor="let post of postarrays" [postsListItem]="post">
+          <li class="app-post-list-item" *ngFor="let post of postarrays; index as i" [postsListItem]="post" [index]="i">
+          
           </li>
-       
-        <!--     
-          <li class="app-post-list-item"  *ngFor="let post of postarrays">
-                {{post.title}} -{{ post.content}}
-          </li>
-         -->
+
       </ul>
 
     </div>

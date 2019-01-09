@@ -20,16 +20,15 @@ export class PostListItemComponent implements OnInit {
    like: number;
    notLike: number;
 
-   setSessionStorage(param, content) {
-    this._flash.show(` ${param} == ${content}`, { cssClass: 'alert-danger', timeout: 1000 });
-    this.localSt.store(`${param}`, `${content}`);
+   setSessionStorage(param, content: number) {
+    // this._flash.show(` ${param} == ${content}`, { cssClass: 'alert-success', timeout: 1000 });
+    this.localSt.store(`${param}`, content);
   }
 
   getSessionStorage() {
-   // this._flash.show( this.localSt.retrieve( `${param}`) , { cssClass: 'alert-danger', timeout: 1000 });
     this.like = typeof this.localSt.retrieve(`like` + this.index) !== 'undefined' ? this.localSt.retrieve(`like` + this.index) : 0;
     // tslint:disable-next-line:max-line-length
-    this.notLike = typeof this.localSt.retrieve( `notlike` + this.index) !== 'undefined' ? this.localSt.retrieve( `notlike` + this.index) : 0;
+    this.notLike = typeof this.localSt.retrieve( `notLike` + this.index) !== 'undefined' ? this.localSt.retrieve( `notLike` + this.index) : 0;
 
   }
 
@@ -40,14 +39,19 @@ export class PostListItemComponent implements OnInit {
   }
 
   constructor(private _flash: FlashMessagesService, private localSt: LocalStorageService) {
-    
-
+    this.getSessionStorage();
   }
 
 
   ngOnInit() {
-    this.getSessionStorage();
-    console.log(this.like);
+    this.like = 0;
+    this.notLike = 0;
+   // this.getSessionStorage();
+    console.log(this.index + '--> like : ' + this.like);
+    console.log(this.index + '--> notLike : ' + this.notLike);
+    this.like = typeof this.localSt.retrieve(`like` + this.index) !== 'undefined' ? this.localSt.retrieve(`like` + this.index) : 0;
+    // tslint:disable-next-line:max-line-length
+    this.notLike = typeof this.localSt.retrieve( `notLike` + this.index) !== 'undefined' ? this.localSt.retrieve( `notLike` + this.index) : 0;
   }
 
   getStatus() {
@@ -75,27 +79,20 @@ export class PostListItemComponent implements OnInit {
 
 
   loveIt() {
-    this.postsListItem.loveIts = this.postsListItem.loveIts + 1;
-    this.like = this.postsListItem.loveIts;
-
-  console.log(this.index);
+    this.like =  this.like + 1;
   console.log(this.localSt.retrieve(`Like${this.index}`));
     this.setSessionStorage( `Like${this.index}`, this.like);
-    this.setSessionStorage( `notLike${this.index}`, this.notLike);
-
+  
     this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`  , { cssClass: 'alert-success', timeout: 1000 });
 
     console.log('love It');
-  
-
   }
 
   dontLoveIt() {
     this.notLike = this.notLike + 1;
+    this.setSessionStorage( `notLike${this.index}`, this.notLike);
     this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`, { cssClass: 'alert-danger', timeout: 1000 });
-
     console.log('dontLoveIt It');
- 
   }
 
 

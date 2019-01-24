@@ -19,6 +19,8 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
 import { AppareilService } from './services/appareil.service';
 import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
+import { DecoComponent } from './deco/deco.component';
+import { HttpComponent } from './http/http.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
     PostListComponent,
     PostListItemComponent,
     AuthComponent,
-    AppareilViewComponent
+    AppareilViewComponent,
+    DecoComponent,
+    HttpComponent
   ],
   imports: [
     BrowserModule,

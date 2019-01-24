@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RecordsService } from '../services/records.service';
+
 
 @Component({
   selector: 'app-http',
@@ -7,10 +9,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./http.component.scss']
 })
 export class HttpComponent implements OnInit {
-
-  constructor() { }
+  records: any;
+  constructor(private myHttpservice: RecordsService) { }
 
   ngOnInit() {
+  this.myHttpservice.getData().subscribe(data => {
+    this.records = data;
+    });
   }
+
 
 }

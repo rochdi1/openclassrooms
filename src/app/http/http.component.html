@@ -1,3 +1,17 @@
 <p>
   http works!
 </p>
+<table class="table">
+  <tr>
+<td scope="col">userId</td>
+<td scope="col">id</td>
+<td scope="col">title</td>
+<td scope="col">body</td>
+  </tr>
+  <tr scope="row" *ngFor="let item of records; let i=index">
+    <td>{{ item.userId }}</td>
+    <td>{{ item.id }}</td>
+    <td>{{ item.title }}</td>
+    <td>{{ item.body }}</td>
+  </tr>
+</table>

@@ -22,6 +22,10 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { DecoComponent } from './deco/deco.component';
 import { HttpComponent } from './http/http.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RecordsService } from './services/records.service';
+import { LoginComponent } from './loginUndAdmin/login/login.component';
+import { AdminComponent } from './loginUndAdmin/admin/admin.component';
+import { RegisterComponent } from './loginUndAdmin/register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     AuthComponent,
     AppareilViewComponent,
     DecoComponent,
-    HttpComponent
+    HttpComponent,
+    LoginComponent,
+    AdminComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   providers: [
-    AppareilService
+    AppareilService,
+    RecordsService
   ],
   bootstrap: [AppComponent]
 })

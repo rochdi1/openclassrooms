@@ -11,9 +11,15 @@ import { AuthComponent } from './auth/auth.component';
 import { DecoComponent } from './deco/deco.component';
 import { HttpComponent } from './http/http.component';
 import { AppareilComponent } from './appareil/appareil.component';
+import { LoginComponent } from './loginUndAdmin/login/login.component';
+import { AdminComponent } from './loginUndAdmin/admin/admin.component';
+import { RegisterComponent } from './loginUndAdmin/register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'test', component: MonPremierComponent },
   { path: 'blog', component: BlogComponent },

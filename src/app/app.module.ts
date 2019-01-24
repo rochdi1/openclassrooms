@@ -21,6 +21,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { DecoComponent } from './deco/deco.component';
 import { HttpComponent } from './http/http.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { HttpComponent } from './http/http.component';
     FlashMessagesModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     NgxWebstorageModule.forRoot(),
 
   ],

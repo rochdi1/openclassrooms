@@ -62,9 +62,11 @@ export class DecoComponent implements OnInit {
 
 
   ngOnInit() {
+ /*
     setInterval(() => {
       this.samevar = Math.random();
     }, 1000);
+    */
   }
 
 }

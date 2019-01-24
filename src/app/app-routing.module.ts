@@ -9,6 +9,8 @@ import { PostListComponent } from './post-list/post-list.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { AuthComponent } from './auth/auth.component';
 import { DecoComponent } from './deco/deco.component';
+import { HttpComponent } from './http/http.component';
+import { AppareilComponent } from './appareil/appareil.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'appareils', component: AppareilViewComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'deco', component: DecoComponent },
+  { path: 'http', component: HttpComponent },
   {path: '**', component: PageNotFoundComponent}
 ];
 

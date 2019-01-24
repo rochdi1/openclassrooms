@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { AppareilService } from '../services/appareil.service';
 
 @Component({
   selector: 'app-home',
@@ -21,21 +22,9 @@ export class HomeComponent {
   appareilOne = 'Machine à laver';
   appareilTwo = 'Frigo';
   appareilThree = 'Ordinateur';
-  appareils = [
-    {
-      name: 'Machine à laver2',
-      status: 'éteint'
-    },
-    {
-      name: 'Frigo2',
-      status: 'allumé'
-    },
-    {
-      name: 'Ordinateur2',
-      status: 'éteint'
-    }
-  ];
-    constructor(private _flashMessagesService: FlashMessagesService ) {
+  appareils = this.appareilService.appareils;
+
+    constructor(private _flashMessagesService: FlashMessagesService, private appareilService: AppareilService  ) {
         setTimeout(
                   () => {
                     this.isAuth = true;
@@ -46,9 +35,19 @@ export class HomeComponent {
 
 
     onAllumer() {
+      this.appareilService.switchOnAll();
       this._flashMessagesService.show('On allume tout !', { cssClass: 'alert-success', timeout: 1000 });
       console.log('On allume tout !');
     }
 
+    onEteindre() {
+      if (confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?')) {
+        this.appareilService.switchOffAll();
+      } else {
+        return null;
+      }
+  }
 
 }
+
+

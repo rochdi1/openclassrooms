@@ -64,7 +64,6 @@ export class PostListItemComponent implements OnInit {
         if (this.like === this.notLike) {
           return 'null';
         }
-
   }
 
   getColor() {
@@ -80,11 +79,9 @@ export class PostListItemComponent implements OnInit {
 
   loveIt() {
     this.like =  this.like + 1;
-  console.log(this.localSt.retrieve(`Like${this.index}`));
+    console.log(this.localSt.retrieve(`Like${this.index}`));
     this.setSessionStorage( `Like${this.index}`, this.like);
-  
     this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`  , { cssClass: 'alert-success', timeout: 1000 });
-
     console.log('love It');
   }
 
@@ -94,9 +91,5 @@ export class PostListItemComponent implements OnInit {
     this._flash.show(`I like :  ${this.like} / I dont Like :  ${this.notLike}`, { cssClass: 'alert-danger', timeout: 1000 });
     console.log('dontLoveIt It');
   }
-
-
-
-
 
 }

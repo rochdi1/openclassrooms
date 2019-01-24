@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BlogComponent } from './blog/blog.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { AppareilViewComponent } from './appareil-view/appareil-view.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'test', component: MonPremierComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'posts', component: PostListComponent },
+  { path: 'appareils', component: AppareilViewComponent },
+  { path: 'auth', component: AuthComponent },
   {path: '**', component: PageNotFoundComponent}
 ];
 

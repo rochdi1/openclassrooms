@@ -54,7 +54,7 @@ export class DecoComponent implements OnInit {
 
   @log2
   aSimpleMethode2(a, b) {
-   return a * b;
+   return a ** b;
   }
   doSomeHeavyTask() {
     console.log(`Called ${this.i++} times`);
